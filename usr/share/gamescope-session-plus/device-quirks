@@ -3,6 +3,7 @@
 
 SYS_ID="$(cat /sys/devices/virtual/dmi/id/product_name)"
 CPU_VENDOR="$(lscpu | grep "Vendor ID" | cut -d : -f 2 | xargs)"
+CURSOR_DELAY=${GAMESCOPE_OVERRIDE_CURSOR_DELAY:-3000}
 
 # OXP 60Hz Devices
 OXP_LIST="ONE XPLAYER:ONEXPLAYER 1 T08:ONEXPLAYER 1S A08:ONEXPLAYER 1S T08:ONEXPLAYER mini A07:ONEXPLAYER mini GA72:ONEXPLAYER mini GT72:ONEXPLAYER Mini Pro:ONEXPLAYER GUNDAM GA72:ONEXPLAYER 2 ARP23:ONEXPLAYER 2 PRO ARP23H:ONEXPLAYER 2 PRO ARP23P:ONEXPLAYER 2 PRO ARP23P EVA-01"
@@ -13,7 +14,7 @@ if [[ ":$OXP_LIST:" =~ ":$SYS_ID:"  ]] || [[  ":$AOK_LIST:" =~ ":$SYS_ID:"   ]];
   ORIENTATION=left
 
   # Set refresh rate range and enable refresh rate switching
-  export STEAM_DISPLAY_REFRESH_LIMITS=40,60
+  export STEAM_DISPLAY_REFRESH_LIMITS=${GAMESCOPE_OVERRIDE_REFRESH_RATE:-40,60}
 fi
 
 # OXP 120Hz Devices
@@ -23,7 +24,7 @@ if [[ ":$OXP_120_LIST:" =~ ":$SYS_ID:"  ]]; then
   ORIENTATION=left
 
   # Set refresh rate range and enable refresh rate switching
-  export STEAM_DISPLAY_REFRESH_LIMITS=40,120
+  export STEAM_DISPLAY_REFRESH_LIMITS=${GAMESCOPE_OVERRIDE_REFRESH_RATE:-40,120}
 fi
 
 # AYANEO AIR, SLIDE, and FLIP Keyboard Devices
@@ -48,7 +49,7 @@ if [[ ":$AYN_LIST:" =~ ":$SYS_ID:"  ]]; then
   ORIENTATION=left
 
   # Set refresh rate range and enable refresh rate switching
-  export STEAM_DISPLAY_REFRESH_LIMITS=40,60
+  export STEAM_DISPLAY_REFRESH_LIMITS=${GAMESCOPE_OVERRIDE_REFRESH_RATE:-40,60}
 fi
 
 # GDP Win devices
@@ -100,7 +101,7 @@ if [[ ":$ALLY_LIST:" =~ ":$SYS_ID:"  ]]; then
   ADAPTIVE_SYNC=1
 
   # Set refresh rate range and enable refresh rate switching
-  export STEAM_DISPLAY_REFRESH_LIMITS=40,120
+  export STEAM_DISPLAY_REFRESH_LIMITS=${GAMESCOPE_OVERRIDE_REFRESH_RATE:-40,120}
 fi
 
 # Lenovo Legion Go
