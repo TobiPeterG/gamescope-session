@@ -22,7 +22,7 @@ The session sources environment from `~/.config/environment.d/*.conf` files.
 The easiest way to configure the session is to create `~/.config/environment.d/gamescope-session-plus.conf`
 and set variables there:
 
-```
+```bash
 # Size of the screen. If not set gamescope will detect native resolution from drm.
 SCREEN_HEIGHT=2160
 SCREEN_WIDTH=3840
@@ -52,6 +52,11 @@ export STEAM_DISPLAY_REFRESH_LIMITS=40,60
 # TODO: document
 DRM_MODE=fixed
 
+# Specify if you want to enable support for HDR content
+ENABLE_GAMESCOPE_HDR=1
+# Set the target luminace of the inverse tone mapping process (option)
+GAMESCOPE_HDR_NITS=400
+
 # Override entire client command line
 CLIENTCMD="steam -steamos -pipewire-dmabuf -gamepadui"
 
@@ -75,7 +80,7 @@ We also need to create `/usr/share/wayland-sessions/gamescope-session-video.desk
 defining the session so it appears as an option in our Display Manager/Login screen.
 
 In our example, this could be:
-```
+```ini
 [Desktop Entry]
 Encoding=UTF-8
 Name=Video
